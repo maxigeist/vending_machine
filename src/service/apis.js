@@ -47,6 +47,16 @@ export const getCredit = async () => {
     }
 }
 
+export const getMachines = async () => {
+    try{
+        const response = await apiInstance.get('/machines');
+        return response.data;
+    }
+    catch (error){
+        console.log(error)
+    }
+}
+
 
 
 
