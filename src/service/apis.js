@@ -6,9 +6,9 @@ const apiInstance = axios.create({
 })
 
 
-export const getProducts = async () => {
+export const getProducts = async (machineId) => {
     try{
-        const response = await apiInstance.get('/products');
+        const response = await apiInstance.get('/products', {data: {machineId: machineId}});
         return response.data;
     }
     catch (error){
@@ -16,9 +16,9 @@ export const getProducts = async () => {
     }
 }
 
-export const getStatus = async () => {
+export const getStatus = async (machineId) => {
     try{
-        const response = await apiInstance.get('/status');
+        const response = await apiInstance.get('/status', {data: {machineId: machineId}});
         return response.data;
     }
     catch (error){
@@ -26,9 +26,9 @@ export const getStatus = async () => {
     }
 }
 
-export const getEarnings = async () => {
+export const getEarnings = async (machineId) => {
     try{
-        const response = await apiInstance.get('/earnings');
+        const response = await apiInstance.get('/earnings', {data: {machineId: machineId}});
         return response.data;
     }
     catch (error){
@@ -37,14 +37,25 @@ export const getEarnings = async () => {
 
 }
 
-export const getCredit = async () => {
+export const getCredit = async (machineId) => {
     try{
-        const response = await apiInstance.get('/credit');
+        const response = await apiInstance.get('/credit', {data: {machineId: machineId}});
         return response.data;
     }
     catch (error){
         console.log(error)
     }
+}
+
+export const getMachines = async () => {
+    try{
+        const response = await apiInstance.get('/machines');
+        return response.data
+    }
+    catch (error){
+        console.log(error)
+    }
+
 }
 
 
