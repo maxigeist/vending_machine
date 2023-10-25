@@ -4,19 +4,18 @@ import styles from '../styles/MachineStatus.module.css'; // Asegúrate de tener 
 
 const MachineStatus = ({machine}) => {
   // Datos hardcodeados (reemplázalos con los datos reales)
-  const products = [
-    { id: 1, name: 'Producto 1', stock: 5, price: 5 },
-    { id: 2, name: 'Producto 2', stock: 5, price: 5 },
-    { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-    { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-    { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-    { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-  ];
+  // const products = [
+  //   { id: 1, name: 'Producto 1', stock: 5, price: 5 },
+  //   { id: 2, name: 'Producto 2', stock: 5, price: 5 },
+  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
+  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
+  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
+  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
+  // ];
 
-  const status = 'En funcionamiento';
-  const earnings = 500; // Cambia esto con el monto real de ganancias
-  const credit = 200; // Cambia esto con el monto real de crédito
-
+  // const status = 'En funcionamiento';
+  // const earnings = 500; // Cambia esto con el monto real de ganancias
+  // const credit = 200; // Cambia esto con el monto real de crédito
 
 
   return (
@@ -36,7 +35,7 @@ const MachineStatus = ({machine}) => {
           </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {machine?.products.map((product) => (
               <>
               <tr>
                 <td>{product.id}</td>
@@ -54,17 +53,17 @@ const MachineStatus = ({machine}) => {
 
       <div className={styles.statusItem}>
         <h2>Estado</h2>
-        <p>{status}</p>
+        <p>{machine?.status}</p>
       </div>
 
       <div className={styles.statusItem}>
         <h2>Ganancias</h2>
-        <p>${earnings}</p>
+        <p>${machine?.earnings}</p>
       </div>
 
       <div className={styles.statusItem}>
         <h2>Crédito</h2>
-        <p>${credit}</p>
+        <p>${machine?.credit}</p>
       </div>
     </div>
   );
