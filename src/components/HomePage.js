@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {getCredit, getEarnings, getProducts, getStatus, getMachines, getStats} from '../service/apis';
+import {getProducts, getMachines, getStats} from '../service/apis';
 import MachineStatus from './MachineStatus';
 import styles from '../styles/HomePage.module.css'
 
@@ -44,6 +44,11 @@ function HomePage() {
     }, []);
 
 
+    const refreshFunction = () => {
+        fetchMachines()
+
+    }
+
 
   return (
     <div className={styles.HomeWrapper}>
@@ -57,12 +62,12 @@ function HomePage() {
         <h1 className={styles.SelectorTitle}>Estadísticas</h1>
         <button className={`${statistics ? styles.idButtonSelected : ''} ${styles.idButton}`} onClick={()=> setStatistics(true)}>📊</button>
       </div>
-        <div>
+        <div style={{display:"flex", alignItems:"center", justifyContent:"center", width:"100%"}}>
       {statistics ?
           <h1>Estas son las estadísticas</h1>
           :
           ( currentMachine ?
-          <MachineStatus machine={currentMachine}/> : <h1 style={{display:"flex", alignItems:"center", justifyContent:"center"}}>Elija una máquina</h1>
+          <MachineStatus machine={currentMachine} refresh={()=> refreshFunction()}/> : <h1>Elija una máquina</h1>
           )
       }
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/MachineStatus.module.css'; // Asegúrate de tener un archivo CSS vinculado
 
 
-const MachineStatus = ({machine}) => {
+const MachineStatus = ({machine, refresh}) => {
 
   // Datos hardcodeados (reemplázalos con los datos reales)
   // const products = [
@@ -22,6 +22,7 @@ const MachineStatus = ({machine}) => {
   return (
 
     <div className={styles.machineStatusContainer}>
+        <button onClick={refresh}></button>
       <h1 className={styles.h1VendingMachine}>Estado de la Máquina Expendedora</h1>
 
       <div className={styles.statusItem}>
