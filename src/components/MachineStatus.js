@@ -3,6 +3,7 @@ import styles from '../styles/MachineStatus.module.css'; // Asegúrate de tener 
 
 
 const MachineStatus = ({machine}) => {
+
   // Datos hardcodeados (reemplázalos con los datos reales)
   // const products = [
   //   { id: 1, name: 'Producto 1', stock: 5, price: 5 },
@@ -19,29 +20,31 @@ const MachineStatus = ({machine}) => {
 
 
   return (
+
     <div className={styles.machineStatusContainer}>
-      <h1>Estado de la Máquina Expendedora</h1>
+      <h1 className={styles.h1VendingMachine}>Estado de la Máquina Expendedora</h1>
 
       <div className={styles.statusItem}>
-        <h2>Productos</h2>
+        <h2 className={styles.h2}>Productos</h2>
         
-        <table style={{width: '100%'}}>
+        <table style={{width:"100%"}}>
           <thead>
           <tr>
             <th>Id</th>
-            <th>Name</th>
+            <th>Nombre</th>
             <th>Stock</th>
-            <th>Price</th>
+            <th>Precio</th>
           </tr>
           </thead>
           <tbody>
+
             {machine?.products.map((product) => (
               <>
               <tr>
-                <td>{product.id}</td>
-                <td>{product.name}</td>
+                <td>{product.product.slice(-4)}</td>
+                <td>{product.productName}</td>
                 <td>{product.stock}</td> 
-                <td>U$D {product.price}.00</td> 
+                <td>U$D 5.00</td>
               </tr>
               </>
             ))}
@@ -52,18 +55,18 @@ const MachineStatus = ({machine}) => {
       </div>
 
       <div className={styles.statusItem}>
-        <h2>Estado</h2>
-        <p>{machine?.status}</p>
+        <h2 className={styles.h2}>Estado</h2>
+        <p className={styles.p}>{machine?.status ? "✅" : "❌" }</p>
       </div>
 
       <div className={styles.statusItem}>
-        <h2>Ganancias</h2>
-        <p>${machine?.earnings}</p>
+        <h2 className={styles.h2}>Ganancias</h2>
+        <p className={styles.p}>${machine?.earnings}</p>
       </div>
 
       <div className={styles.statusItem}>
-        <h2>Crédito</h2>
-        <p>${machine?.credit}</p>
+        <h2 className={styles.h2}>Crédito</h2>
+        <p className={styles.p}>${machine?.credit}</p>
       </div>
     </div>
   );

@@ -1,11 +1,29 @@
 .machineStatusContainer {
-    max-width: 600px;
+    width: 800px;
+    height: auto;
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+
   }
+
+.h2{
+  font-size: 32px;
+}
+
+.p{
+  font-size: 20px;
+  min-width: 100%;
+
+
+}
+
+.h1VendingMachine{
+  font-size: 40px;
+  color:rgb(87, 87, 87);
+}
   
   .statusItem {
     margin-bottom: 20px;
@@ -37,5 +55,9 @@
   tr:hover {
     background-color: rgb(236, 236, 236);
     scale: 1.05;
+  }
+  th, td{
+    font-size: 20px;
+    min-width: 200px;
   }
 

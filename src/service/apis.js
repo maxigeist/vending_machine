@@ -2,14 +2,13 @@ import axios from 'axios';
 
 
 const apiInstance = axios.create({
-    baseURL: 'http://localhost:8000/api',
+    baseURL: 'http://localhost:3001/api',
 })
 
 
 export const getProducts = async (machineId) => {
     try{
-        const response = await apiInstance.get('/products', {data: {machineId: machineId}});
-        return response.data;
+        return await apiInstance.get(`/machine/${machineId}/products`);
     }
     catch (error){
         console.log(error);
@@ -18,7 +17,7 @@ export const getProducts = async (machineId) => {
 
 export const getStatus = async (machineId) => {
     try{
-        const response = await apiInstance.get('/status', {data: {machineId: machineId}});
+        const response = await apiInstance.get('/machine/status', {data: {id: machineId}});
         return response.data;
     }
     catch (error){
@@ -28,18 +27,17 @@ export const getStatus = async (machineId) => {
 
 export const getEarnings = async (machineId) => {
     try{
-        const response = await apiInstance.get('/earnings', {data: {machineId: machineId}});
+        const response = await apiInstance.get(`/machine/${machineId}/earnings`);
         return response.data;
     }
     catch (error){
         console.log(error)
     }
-
 }
 
 export const getCredit = async (machineId) => {
     try{
-        const response = await apiInstance.get('/credit', {data: {machineId: machineId}});
+        const response = await apiInstance.get(`/machine/${machineId}/credit`);
         return response.data;
     }
     catch (error){
@@ -49,13 +47,23 @@ export const getCredit = async (machineId) => {
 
 export const getMachines = async () => {
     try{
-        const response = await apiInstance.get('/machines');
-        return response.data
+        return await apiInstance.get('/machine');
     }
     catch (error){
         console.log(error)
     }
 
+}
+
+
+export const getStats = async (machineId) => {
+    try{
+        const response = await apiInstance.get(`/machine/${machineId}/stats`);
+        return response.data;
+    }
+    catch (error){
+        console.log(error)
+    }
 }
 
 
