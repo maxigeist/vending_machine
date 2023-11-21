@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from '../styles/MachineStatus.module.css'; // Asegúrate de tener un archivo CSS vinculado
+import Statistics from './Stadistics';
 
 
-const MachineStatus = ({machine, refresh}) => {
+const MachineStatus = ({machine}) => {
 
   // Datos hardcodeados (reemplázalos con los datos reales)
   // const products = [
@@ -22,7 +23,6 @@ const MachineStatus = ({machine, refresh}) => {
   return (
 
     <div className={styles.machineStatusContainer}>
-        <button onClick={refresh}></button>
       <h1 className={styles.h1VendingMachine}>Estado de la Máquina Expendedora</h1>
 
       <div className={styles.statusItem}>
@@ -54,21 +54,23 @@ const MachineStatus = ({machine, refresh}) => {
           
           </table>
       </div>
+      <div className={styles.statusContainer}>
+        <div className={styles.statusItem}>
+          <h2 className={styles.h2}>Estado</h2>
+          <p className={styles.p}>{machine?.status ? "✅" : "❌" }</p>
+        </div>
 
-      <div className={styles.statusItem}>
-        <h2 className={styles.h2}>Estado</h2>
-        <p className={styles.p}>{machine?.status ? "✅" : "❌" }</p>
-      </div>
+        <div className={styles.statusItem}>
+          <h2 className={styles.h2}>Ganancias</h2>
+          <p className={styles.p}>${machine?.earnings}</p>
+        </div>
 
-      <div className={styles.statusItem}>
-        <h2 className={styles.h2}>Ganancias</h2>
-        <p className={styles.p}>${machine?.earnings}</p>
+        <div className={styles.statusItem}>
+          <h2 className={styles.h2}>Crédito</h2>
+          <p className={styles.p}>${machine?.credit}</p>
+        </div>
       </div>
-
-      <div className={styles.statusItem}>
-        <h2 className={styles.h2}>Crédito</h2>
-        <p className={styles.p}>${machine?.credit}</p>
-      </div>
+      <Statistics className={styles.statusItem}/>
     </div>
   );
 };

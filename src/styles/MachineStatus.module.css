@@ -61,3 +61,8 @@
     min-width: 200px;
   }
 
+  .statusContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

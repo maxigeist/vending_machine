@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import {getProducts, getMachines, getStats} from '../service/apis';
 import MachineStatus from './MachineStatus';
 import styles from '../styles/HomePage.module.css'
+import Statistics from './Stadistics';
 
 function HomePage() {
 
     const [currentMachine, setCurrentMachine] = useState();
     const [statistics, setStatistics] = useState(false);//this is for the buttons.
     const [machines, setMachines] = useState()
+    const [refresh, setRefresh] = useState(false)
 
 
     const fetchMachines = async () => {
@@ -41,7 +43,7 @@ function HomePage() {
         fetchMachines();
         // setCurrentMachine(machines[0])
         // getMachines().then((response) => setMachines(response))
-    }, []);
+    }, [refresh]);
 
 
     const refreshFunction = () => {
@@ -64,7 +66,7 @@ function HomePage() {
       </div>
         <div style={{display:"flex", alignItems:"center", justifyContent:"center", width:"100%"}}>
       {statistics ?
-          <h1>Estas son las estadísticas</h1>
+          <div style={{display: 'flex', flexDirection: 'column'}}><h1>Estas son las estadísticas</h1><Statistics></Statistics></div>
           :
           ( currentMachine ?
           <MachineStatus machine={currentMachine} refresh={()=> refreshFunction()}/> : <h1>Elija una máquina</h1>

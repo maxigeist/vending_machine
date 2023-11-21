@@ -1,0 +1,53 @@
+.customPieChart:hover {
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .customPieChart path:hover {
+    opacity: 0.7; /* Ajusta la opacidad según tus preferencias */
+    transition: all 0.2s ease-in-out;
+    max-height: 10px;
+    /* overflow: hidden; */
+    align-items: center;
+    justify-content: center;
+    padding: 10rem;
+    margin: 10rem;
+
+  }
+  
+  /* Stadistics.module.css */
+
+.chartContainer {
+    display: flex;
+  }
+  
+  .chart {
+    padding-top: 10px;
+    width: 25%;
+  }
+  
+  .legend {
+    width: 150px; /* Ancho de la lista */
+  }
+  
+  .legendList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .legendItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: smaller;
+  }
+  
+  .legendColor {
+    width: 15px; /* Ancho del cuadrado de color */
+    height: 15px; /* Altura del cuadrado de color */
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
