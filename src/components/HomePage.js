@@ -24,6 +24,9 @@ function HomePage() {
         catch (error){
             console.log(error)
         }
+        finally {
+          setRefresh(!refresh)
+        }
     }
 
     const handleCurrentMachine = async (machineId, credit, status, key) => {
@@ -39,7 +42,7 @@ function HomePage() {
                 key : key
             }
         )
-        setLoading(false)
+        // setLoading(false)
     }
 
 
@@ -47,7 +50,7 @@ function HomePage() {
         fetchMachines();
         // setCurrentMachine(machines[0])
         // getMachines().then((response) => setMachines(response))
-    }, [refresh]);
+    }, []);
 
 
   return (
@@ -68,7 +71,7 @@ function HomePage() {
           <div style={{display: 'flex', flexDirection: 'column'}}><h1>Estas son las estadísticas</h1><Statistics></Statistics></div>
           :
           ( currentMachine ?
-          <MachineStatus machine={currentMachine} refresh={fetchMachines}/> : <h1>Elija una máquina</h1>
+          <MachineStatus machine={currentMachine} refresh={fetchMachines} refreshVar={refresh} loader={setLoading}/> : <h1>Elija una máquina</h1>
           )
       }
         </div>

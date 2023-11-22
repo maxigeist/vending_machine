@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 import { getStats } from '../service/apis';
 import GraficoVentas from './SellsChart';
 
-const DonutChart = ({ currentMachineId }) => {
+const DonutChart = ({ currentMachineId, refreshVar, loading }) => {
   const [series, setSeries] = useState([]);
   const [productos, setProductos] = useState(null);
   const [options, setOptions] = useState({
@@ -87,15 +87,18 @@ const DonutChart = ({ currentMachineId }) => {
       } catch (error) {
         console.error("Error fetching stats:", error);
       }
+      finally {
+        loading(false);
+      }
     };
 
     fetchStats();
-  }, [currentMachineId]);
+  }, [currentMachineId, refreshVar]);
 
   const nombrePorCodigo = {
-    '6550da5696bc3f713a2fc0bb': ' ESP',
-    '6550da5696bc3f713a2fc0bc':  '  Protoboard	',
-    '6550d9a796bc3f713a2fc0ba': ' Led',
+    '6550da5696bc3f713a2fc0bb': ' Protoboard',
+    '6550da5696bc3f713a2fc0bc':  '  Led	',
+    '6550d9a796bc3f713a2fc0ba': ' ESP',
     '6550da5696bc3f713a2fc0bd': ' Pusher',
   };
 

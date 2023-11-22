@@ -21,9 +21,9 @@ const GraficoVentas = ({ productos }) => {
   const dias = Object.keys(ventasPorDia).sort(); // Ordena los días de forma ascendente
 
   const nombrePorCodigo = {
-    '6550da5696bc3f713a2fc0bb': ' ESP',
-    '6550da5696bc3f713a2fc0bc':  '  Protoboard	',
-    '6550d9a796bc3f713a2fc0ba': ' Led',
+    '6550da5696bc3f713a2fc0bb': ' Protoboard',
+    '6550da5696bc3f713a2fc0bc':  '  Led	',
+    '6550d9a796bc3f713a2fc0ba': ' ESP',
     '6550da5696bc3f713a2fc0bd': ' Pusher',
     // Agrega otros productos según sea necesario
   };

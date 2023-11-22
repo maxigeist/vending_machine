@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
 import Loader from "../components/Loader";
 
-const MachineStatus = ({machine, refresh}) => {
+const MachineStatus = ({machine, refresh, refreshVar, loader}) => {
 
     const [loading, setLoading] = useState(false);
 
@@ -19,10 +19,15 @@ const MachineStatus = ({machine, refresh}) => {
                     console.log("hola")
                 })
                 .finally(() => {
-                    setLoading(false);
+                    // setLoading(false);
                 });
 
     };
+
+    const handleLoading = (value) => {
+        loader(false);
+        setLoading(value);
+    }
 
 
 
@@ -83,7 +88,7 @@ const MachineStatus = ({machine, refresh}) => {
       </div>
       {/* <div style={{height: '1rem'}}> */}
 
-      <Statistics className={styles.statusItem} currentMachineId={machine.machineId}/>
+      <Statistics className={styles.statusItem} currentMachineId={machine.machineId} refreshVar={refreshVar} loading={handleLoading}/>
       {/* </div> */}
       </div>
   );
