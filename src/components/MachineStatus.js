@@ -1,28 +1,38 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from '../styles/MachineStatus.module.css'; // Asegúrate de tener un archivo CSS vinculado
 import Statistics from './Stadistics';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
+import Loader from "../components/Loader";
+
+const MachineStatus = ({machine, refresh}) => {
+
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+    }, [machine.status, machine.earnings, machine.credit, machine.products])
+
+    const handleClick = async () => {
+            setLoading(true);
+            refresh()
+                .then(() => {
+                    console.log("hola")
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+
+    };
 
 
-const MachineStatus = ({machine}) => {
-
-  // Datos hardcodeados (reemplázalos con los datos reales)
-  // const products = [
-  //   { id: 1, name: 'Producto 1', stock: 5, price: 5 },
-  //   { id: 2, name: 'Producto 2', stock: 5, price: 5 },
-  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-  //   { id: 3, name: 'Producto 3', stock: 5, price: 5 },
-  // ];
-
-  // const status = 'En funcionamiento';
-  // const earnings = 500; // Cambia esto con el monto real de ganancias
-  // const credit = 200; // Cambia esto con el monto real de crédito
 
 
   return (
-
+      <div>
+          <Loader open={loading} />
     <div className={styles.machineStatusContainer}>
+
+        <button onClick={handleClick} className={styles.idButton}> <FontAwesomeIcon icon={faRotate} /></button>
       <h1 className={styles.h1VendingMachine}>Estado de la Máquina Expendedora</h1>
 
       <div className={styles.statusItem}>
@@ -42,10 +52,10 @@ const MachineStatus = ({machine}) => {
             {machine?.products.map((product) => (
               <>
               <tr>
-                <td>{product.product.slice(-4)}</td>
-                <td>{product.productName}</td>
+                <td>{product.product._id.slice(-4)}</td>
+                <td>{product.product.name}</td>
                 <td>{product.stock}</td> 
-                <td>U$D 5.00</td>
+                <td>U$D {product.product.price}.00</td>
               </tr>
               </>
             ))}
@@ -69,9 +79,13 @@ const MachineStatus = ({machine}) => {
           <h2 className={styles.h2}>Crédito</h2>
           <p className={styles.p}>${machine?.credit}</p>
         </div>
-      </div>
-      <Statistics className={styles.statusItem}/>
     </div>
+      </div>
+      {/* <div style={{height: '1rem'}}> */}
+
+      <Statistics className={styles.statusItem} currentMachineId={machine.machineId}/>
+      {/* </div> */}
+      </div>
   );
 };
 
